@@ -36,11 +36,11 @@ func update_state(new_state):
 		current_state = substates_map[new_state]
 		current_state.enter(args)
 
-# runs the entire state machine/tree, should only be called on the top level state
+# runs the entire state machine/tree, should only be explicitly called on the top level state
 func update(delta : float):
 	run(delta)
 	if(num_children != 0):
-		update_state(current_state.update(delta))
+		update_state(current_state.run(delta))
 
 func set_root_state(new_root : State):
 	root_state = new_root
@@ -48,8 +48,14 @@ func set_root_state(new_root : State):
 		for state in substates_map:
 			substates_map[state].set_root_state(new_root)
 
+#calls the enter functions for each state
+func init():
+	enter([])
+	if(num_children != 0):
+		current_state.init()
+
 # called when a state first becomes active
-func enter(args : Array):
+func enter(_args : Array):
 	current_state = default_state
 
 # run the state, do what is expected of an active state

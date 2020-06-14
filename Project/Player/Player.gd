@@ -1,13 +1,13 @@
 extends KinematicBody2D
 
-var vel : Vector2
+const UP = Vector2(0, -1)
 
 onready var movement = $Movement
 
 func _ready():
-	movement.enter()
+	movement.init()
 
 func _physics_process(delta):
 	
-	movement.update();
-	move_and_slide(movement.velocity)
+	movement.update(delta);
+	move_and_slide(movement.velocity, UP)

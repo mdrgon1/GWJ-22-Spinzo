@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Movement/Running.gd" type="Script" id=1]
 [ext_resource path="res://Player/Movement/Movement.gd" type="Script" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://Player/Movement/Jumping.gd" type="Script" id=4]
 [ext_resource path="res://Player/Movement/Falling.gd" type="Script" id=5]
 [ext_resource path="res://Player/Movement/Swinging.gd" type="Script" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.2558, 4.25754 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 3 )
@@ -24,3 +28,11 @@ script = ExtResource( 4 )
 
 [node name="Swinging" type="Node" parent="Movement"]
 script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 32, 32, 10, 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
