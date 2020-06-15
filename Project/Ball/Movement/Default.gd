@@ -60,7 +60,7 @@ func rotate(delta):
 	print(rotations_per_sec)
 	
 	if(latched):
-		owner.player.movement.target_velocity = -root_state.velocity
+		owner.player.movement.target_velocity = -root_state.velocity * 1.2
 		root_state.velocity = Vector2(0, 0)
 	else:
 		# somewhat adjust for player movement

@@ -5,9 +5,14 @@ const MAX_DISTANCE = 170
 var timer : float
 
 func enter(_args):
+	owner.player.movement.update_state("Falling")
+	
 	timer = 0
 
 func run(delta):
+	
+	if(root_state.velocity == Vector2(0, 0)):
+		return ["Default", false]
 	
 	if(Input.is_action_just_released("throw_ball")):
 		return ["Default", false]
@@ -25,4 +30,5 @@ func run(delta):
 		return ["Default", false]
 	
 	if(Input.is_key_pressed(KEY_X)):
+		owner.player.movement.update_state("Swinging")	#force player into swinging state
 		return ["Default", true]
