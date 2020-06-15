@@ -12,3 +12,6 @@ func run(delta):
 		
 	if(!owner.is_on_floor()):
 		return "Falling"
+	
+	if(Input.is_key_pressed(KEY_X)):
+		return "Swinging"

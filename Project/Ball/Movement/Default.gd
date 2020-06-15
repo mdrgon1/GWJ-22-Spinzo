@@ -10,7 +10,7 @@ const VELOCITY_LERP = 1
 
 var target_radius : float
 var rotations_per_sec : float
-var rps_multiplier : float = 1.1
+var rps_multiplier : float = 1
 
 func enter(_args):
 	target_radius = MAX_RADIUS
@@ -26,12 +26,10 @@ func run(delta):
 	else:	#lerp to MIN_RPS
 		rotations_per_sec += (MIN_RPS - rotations_per_sec) * RPS_LERP * delta
 	
+	rotate(delta)
+	
 	if(Input.is_action_just_released("throw_ball")):
 		return "Throwing"
-	
-	print(target_radius, ", ", rotations_per_sec)
-	
-	rotate(delta)
 
 # at a right angle to the vector from player to ball
 func get_tangent():
@@ -43,9 +41,16 @@ func rotate(delta):
 	
 	# points the velocity towards target radius, between player and ball
 	root_state.velocity = owner.player.position - (owner.to_player().normalized() * target_radius) - owner.position
+	root_state.velocity *= pow(rps_multiplier, 2)
 	
 	# add tangent velocity
 	root_state.velocity += tangent_velocity * get_tangent()
 	
-	# somewhat adjuct for player movement
-	root_state.velocity += owner.player.movement.velocity * 0.3
+	if(Input.is_key_pressed(KEY_X)):
+		owner.player.movement.target_velocity = -root_state.velocity
+		root_state.velocity = Vector2(0, 0)
+		
+		print(rotations_per_sec)
+	else:
+		# somewhat adjuct for player movement
+		root_state.velocity += owner.player.movement.velocity * 0.3
