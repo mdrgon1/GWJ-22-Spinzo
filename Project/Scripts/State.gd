@@ -38,9 +38,10 @@ func update_state(new_state):
 
 # runs the entire state machine/tree, should only be explicitly called on the top level state
 func update(delta : float):
-	run(delta)
 	if(num_children != 0):
-		update_state(current_state.run(delta))
+		update_state(current_state.update(delta))
+	
+	return run(delta)
 
 func set_root_state(new_root : State):
 	root_state = new_root

@@ -10,4 +10,4 @@ func _ready():
 func _physics_process(delta):
 	
 	movement.update(delta);
-	move_and_slide(movement.velocity, UP)
+	movement.velocity = move_and_slide(movement.velocity, UP)

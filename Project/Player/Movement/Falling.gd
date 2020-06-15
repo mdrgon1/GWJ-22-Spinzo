@@ -2,7 +2,7 @@ extends State
 
 func enter(_args):
 	print("falling")
-	root_state.vel_lerp = 0.2
+	root_state.vel_lerp = 0.06
 
 func run(delta : float):
 	root_state.target_velocity.x = root_state.get_input_vector().x * root_state.HOR_SPEED #normal movement
