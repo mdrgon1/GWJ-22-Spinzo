@@ -4,8 +4,8 @@ onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var movement = $Movement
 
 func _ready():
-	movement.init()
 	movement.set_root_state(movement)
+	movement.init()
 
 func _physics_process(delta):
 	movement.update(delta)
