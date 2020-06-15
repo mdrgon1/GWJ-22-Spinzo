@@ -1,8 +1,8 @@
 extends State
 
-const GRAVITY = 80
-const MAX_FALL_SPEED = 50
-const HOR_SPEED = 60 # characters horizontal movement speed
+const GRAVITY = 150
+const MAX_FALL_SPEED = 80
+const HOR_SPEED = 80 # characters horizontal movement speed
 
 var velocity = Vector2(0, 0)
 var target_velocity = Vector2(0, 0)
@@ -12,7 +12,7 @@ func _ready():
 	set_root_state(self)	# set root state of entire machine to self
 
 func run(delta : float):
-	velocity += (target_velocity - velocity) * vel_lerp * delta	# lerp velocity to the target velocity
+	velocity += (target_velocity - velocity) * vel_lerp * delta * 60	# lerp velocity to the target velocity
 
 # update velocity and target velocity to byass slerping
 func move_directly(vec : Vector2):

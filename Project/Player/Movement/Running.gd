@@ -1,7 +1,7 @@
 extends State
 
 func enter(_args):
-	root_state.vel_lerp = 1
+	root_state.vel_lerp = 0.2
 	print("running")
 
 func run(delta):
