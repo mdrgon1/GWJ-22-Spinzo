@@ -1,7 +1,7 @@
 extends State
 
 const MAX_RADIUS = 25
-const MIN_RADIUS = 1
+const MIN_RADIUS = 10
 const RADIUS_LERP = 1
 const MAX_RPS = 1.2
 const MIN_RPS = 0.3
@@ -39,18 +39,23 @@ func get_tangent():
 func rotate(delta):
 	var tangent_velocity = (owner.to_player().length() * 2 * PI) * (rotations_per_sec * rps_multiplier)
 	
-	# points the velocity towards target radius, between player and ball
+	# points the velocity towards target radius
 	root_state.velocity = owner.player.position - (owner.to_player().normalized() * target_radius) - owner.position
+	if(root_state.velocity.length() >= MIN_RADIUS):	# cap radial velocity
+		root_state.velocity = root_state.velocity.normalized() * MIN_RADIUS
+	
+	# adjust to account for centripedal force or something
+	root_state.velocity *= root_state.velocity.length()
 	root_state.velocity *= pow(rps_multiplier, 2)
 	
 	# add tangent velocity
 	root_state.velocity += tangent_velocity * get_tangent()
 	
+	print(rotations_per_sec)
+	
 	if(Input.is_key_pressed(KEY_X)):
 		owner.player.movement.target_velocity = -root_state.velocity
 		root_state.velocity = Vector2(0, 0)
-		
-		print(rotations_per_sec)
 	else:
-		# somewhat adjuct for player movement
+		# somewhat adjust for player movement
 		root_state.velocity += owner.player.movement.velocity * 0.3
