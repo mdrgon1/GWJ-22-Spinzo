@@ -10,7 +10,7 @@ func enter(_args):
 func run(delta):
 	
 	if(Input.is_action_just_released("throw_ball")):
-		return "Default"
+		return ["Default", false]
 
 	#if throw ball is held long enough, revert to a charging state
 	if(Input.is_action_pressed("throw_ball")):
@@ -19,7 +19,10 @@ func run(delta):
 		timer = 0
 	
 	if(timer >= TIME_TO_RECHARGE):
-		return "Default"
+		return ["Default", false]
 		
 	if(owner.to_player().length() >= MAX_DISTANCE):
-		return "Default"
+		return ["Default", false]
+	
+	if(Input.is_key_pressed(KEY_X)):
+		return ["Default", true]

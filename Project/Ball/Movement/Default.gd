@@ -11,8 +11,14 @@ const VELOCITY_LERP = 1
 var target_radius : float
 var rotations_per_sec : float
 var rps_multiplier : float = 1
+var latched : bool	# keep track of whether or the ball is latched on to something
 
 func enter(_args):
+	if(_args.size() != 0):
+		latched = _args[0]
+	else:
+		latched = false
+	
 	target_radius = MAX_RADIUS
 	
 	# start rps at what it actually is, then lerp to MIN_RPS
@@ -53,7 +59,7 @@ func rotate(delta):
 	
 	print(rotations_per_sec)
 	
-	if(Input.is_key_pressed(KEY_X)):
+	if(latched):
 		owner.player.movement.target_velocity = -root_state.velocity
 		root_state.velocity = Vector2(0, 0)
 	else:
