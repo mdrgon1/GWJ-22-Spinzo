@@ -8,7 +8,7 @@ extents = Vector2( 17.398, 14.6137 )
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource( 1 )
-bounds_rect = Rect2( -39.869, -60.135, 79.738, 104.774 )
+bounds_rect = Rect2( -20, -40, 40, 70 )
 
 [node name="EnemySpawns" type="Node" parent="."]
 

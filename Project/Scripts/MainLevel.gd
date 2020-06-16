@@ -36,15 +36,18 @@ func _process(delta):
 		
 		# create new levels if necessary
 		if(level.following_levels.size() == 0 && level.position.y >= upper_bound && abs(level.position.x - camera.position.x) < SPAWN_THRESHOLD_X):
-			var new_level_pos = Vector2(randf(), randf())
-			new_level_pos.x *= LEVEL_SPAWN_BOUNDS.size.x
-			new_level_pos.y *= LEVEL_SPAWN_BOUNDS.size.y
-			new_level_pos += LEVEL_SPAWN_BOUNDS.position
-			new_level_pos += level.position
-			
-			var new_level = create_level(new_level_pos)
-			if(new_level != null):
-				level.following_levels.append(new_level)
+			for j in range((randi() % 2) + 1):
+				var new_level_pos = Vector2(randf(), randf())
+				new_level_pos.x *= LEVEL_SPAWN_BOUNDS.size.x
+				new_level_pos.y *= LEVEL_SPAWN_BOUNDS.size.y
+				new_level_pos += LEVEL_SPAWN_BOUNDS.position
+				new_level_pos += level.position
+				
+				var new_level = create_level(new_level_pos)
+				if(new_level != null):
+					level.following_levels.append(new_level)
+				else:
+					j -= 1
 
 # create a random level at a given position
 func create_level(position : Vector2):
