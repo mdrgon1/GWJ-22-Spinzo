@@ -1,17 +1,16 @@
 extends Node2D
 
 var num_hazards = 3
+var following_levels = []
 
 func _ready():
 	var hazard_spawns = $EnemySpawns
 	for child in hazard_spawns.get_children():
 		create_enemy_at(child)
 
-func test():
-	pass
-
 func create_enemy_at(target : Node2D):
-	var hazard_index = rand_seed(OS.get_ticks_usec())[0] % (num_hazards + 1) # seed hazard generation with time
+	randomize()
+	var hazard_index = randi() % (num_hazards + 1)
 	hazard_index *= sign(hazard_index) # make sure the index is positive
 	
 	# theres a chance there will be no hazard

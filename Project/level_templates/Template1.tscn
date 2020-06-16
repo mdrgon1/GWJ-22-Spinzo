@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/LevelTemplate.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17.398, 14.6137 )
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,3 +22,9 @@ modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 1.49012e-08, 14.3535 )
 scale = Vector2( 0.539348, 0.442491 )
 texture = ExtResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, 14.3346 )
+shape = SubResource( 1 )
