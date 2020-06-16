@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/LevelTemplate.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="EnemySpawns" type="Node" parent="."]
+
+[node name="Node2D" type="Node2D" parent="EnemySpawns"]
+position = Vector2( -23.4391, 0 )
+
+[node name="Node2D2" type="Node2D" parent="EnemySpawns"]
+position = Vector2( 17.0466, -14.3346 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.212525, -0.174879 )
+scale = Vector2( 0.539348, 0.442491 )
+texture = ExtResource( 2 )
