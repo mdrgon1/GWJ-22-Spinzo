@@ -8,14 +8,9 @@ extents = Vector2( 47.5364, 7.20185 )
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource( 1 )
+bounds_rect = Rect2( -62.811, -26.709, 125.622, 53.418 )
 
 [node name="EnemySpawns" type="Node" parent="."]
-
-[node name="Node2D" type="Node2D" parent="EnemySpawns"]
-position = Vector2( -20.6419, -7.8671 )
-
-[node name="Node2D2" type="Node2D" parent="EnemySpawns"]
-position = Vector2( 20.8927, -7.86609 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 0, 0, 1 )
@@ -25,6 +20,9 @@ texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 0, 6.99298 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 1 )
