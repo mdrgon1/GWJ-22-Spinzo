@@ -32,6 +32,8 @@ func update_state(new_state):
 		print_debug("incorrect format for new_state\ncurrent state: ", current_state, current_state.name, "\nnew state: ", new_state, args)
 	
 	if new_state in substates_map:
+		if(substates_map[new_state] == current_state):
+			return
 		substates_map[new_state].exit()
 		current_state = substates_map[new_state]
 		current_state.enter(args)
