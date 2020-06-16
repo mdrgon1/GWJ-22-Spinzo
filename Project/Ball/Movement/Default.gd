@@ -63,8 +63,6 @@ func rotate(delta):
 	# add tangent velocity
 	root_state.velocity += tangent_velocity * get_tangent()
 	
-	print(rotations_per_sec)
-	
 	if(latched):
 		owner.player.movement.target_velocity = -root_state.velocity * 1.2	# increase player velocity just so it feels a little nicer
 		root_state.velocity = Vector2(0, 0)
