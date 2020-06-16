@@ -7,13 +7,16 @@ const MAX_RPS = 1.2
 const MIN_RPS = 0.3
 const RPS_LERP = 0.6
 const VELOCITY_LERP = 1
+const CHARGE_THRESHOLD = 0.7 # how long does a ball need to be charge before it can be thrown
 
 var target_radius : float
 var rotations_per_sec : float
 var rps_multiplier : float = 1
 var latched : bool	# keep track of whether or the ball is latched on to something
+var charge_timer : float
 
 func enter(_args):
+	charge_timer = 0
 	if(_args.size() != 0):
 		latched = _args[0]
 	else:
@@ -26,16 +29,19 @@ func enter(_args):
 	rotations_per_sec = tangent_velocity / (owner.to_player().length() * 2 * PI)
 
 func run(delta):
+	if(Input.is_action_just_released("throw_ball") && charge_timer >= CHARGE_THRESHOLD):
+		return "Throwing"
+	
 	if(Input.is_action_pressed("throw_ball")):	# lerp to MIN_RADIUS and MAX_RPS
 		target_radius += (MIN_RADIUS - target_radius) * RADIUS_LERP * delta
 		rotations_per_sec += (MAX_RPS - rotations_per_sec) * RPS_LERP * delta
-	else:	#lerp to MIN_RPS
+		charge_timer += delta
+	else:	#lerp to MIN_RPS and MAX_RADIUS
+		target_radius += (MAX_RADIUS - target_radius) * RADIUS_LERP * delta
 		rotations_per_sec += (MIN_RPS - rotations_per_sec) * RPS_LERP * delta
+		charge_timer = 0
 	
 	rotate(delta)
-	
-	if(Input.is_action_just_released("throw_ball")):
-		return "Throwing"
 
 # at a right angle to the vector from player to ball
 func get_tangent():
@@ -60,7 +66,7 @@ func rotate(delta):
 	print(rotations_per_sec)
 	
 	if(latched):
-		owner.player.movement.target_velocity = -root_state.velocity * 1.2
+		owner.player.movement.target_velocity = -root_state.velocity * 1.2	# increase player velocity just so it feels a little nicer
 		root_state.velocity = Vector2(0, 0)
 	else:
 		# somewhat adjust for player movement
