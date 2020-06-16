@@ -15,7 +15,7 @@ position = Vector2( -23.4391, 0 )
 position = Vector2( 17.0466, -14.3346 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 0, 1, 0, 1 )
 position = Vector2( -0.212525, -0.174879 )
 scale = Vector2( 0.539348, 0.442491 )
 texture = ExtResource( 2 )
