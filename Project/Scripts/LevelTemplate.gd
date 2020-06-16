@@ -11,12 +11,7 @@ func _process(delta):
 	# draw bounds
 	if(Engine.is_editor_hint()):
 		update()
-	
-	# clean out deleted levels
-	for i in range(following_levels.size()):
-		if(is_instance_valid(following_levels[i])):
-			following_levels.remove(i)
-			break
+
 
 func _draw():
 	draw_rect(bounds_rect, Color(1, 1, 1, 0.5))
