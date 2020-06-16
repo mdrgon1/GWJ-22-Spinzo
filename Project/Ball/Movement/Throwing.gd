@@ -1,12 +1,15 @@
 extends State
 
 const TIME_TO_RECHARGE = 0.1
-const MAX_DISTANCE = 170
-var timer : float
+const MAX_TIME = 600	# how long the ball travels for before it returns (in msec)
+
+var time_thrown : float
+var timer : float	# tracks how long "throw ball" has been pressed for
 
 func enter(_args):
 	owner.player.movement.update_state("Falling")
 	
+	time_thrown = OS.get_ticks_msec()
 	timer = 0
 
 func run(delta):
@@ -26,7 +29,7 @@ func run(delta):
 	if(timer >= TIME_TO_RECHARGE):
 		return ["Default", false]
 		
-	if(owner.to_player().length() >= MAX_DISTANCE):
+	if((OS.get_ticks_msec() - time_thrown) >= MAX_TIME):
 		return ["Default", false]
 	
 	if(Input.is_key_pressed(KEY_X)):
