@@ -7,7 +7,7 @@ const MAX_RPS = 1.2
 const MIN_RPS = 0.3
 const RPS_LERP = 0.6
 const VELOCITY_LERP = 1
-const CHARGE_THRESHOLD = 0.7 # how long does a ball need to be charge before it can be thrown
+const CHARGE_THRESHOLD = 0.3 # how long does a ball need to be charge before it can be thrown
 
 var target_radius : float
 var rotations_per_sec : float
@@ -30,7 +30,7 @@ func enter(_args):
 
 func run(delta):
 	if(Input.is_action_just_released("throw_ball") && charge_timer >= CHARGE_THRESHOLD):
-		return "Throwing"
+		return ["Throwing", latched]
 	
 	if(Input.is_action_pressed("throw_ball")):	# lerp to MIN_RADIUS and MAX_RPS
 		target_radius += (MIN_RADIUS - target_radius) * RADIUS_LERP * delta
