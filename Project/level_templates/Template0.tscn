@@ -8,9 +8,15 @@ extents = Vector2( 47.5364, 7.20185 )
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource( 1 )
-bounds_rect = Rect2( -50, -15, 100, 30 )
+bounds_rect = Rect2( -60, -25, 120, 50 )
 
 [node name="EnemySpawns" type="Node" parent="."]
+
+[node name="Node2D" type="Node2D" parent="EnemySpawns"]
+position = Vector2( 37.7737, -10.5811 )
+
+[node name="Node2D2" type="Node2D" parent="EnemySpawns"]
+position = Vector2( -35.8366, -10.5811 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 0, 0, 1 )

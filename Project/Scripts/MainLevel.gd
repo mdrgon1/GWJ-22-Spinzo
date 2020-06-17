@@ -2,7 +2,7 @@ extends Node2D
 
 const IN_FRAME_BUFFER = 0
 const LEVEL_SPAWN_BOUNDS = Rect2(Vector2(-100, -50), Vector2(200, -150))
-const DESPAWN_RECT = Rect2(Vector2(-150, -100), Vector2(150 * 2, 600))
+const DESPAWN_RECT = Rect2(Vector2(-150, -100), Vector2(150 * 2, 200))
 
 var num_levels = 3
 var active_levels = []
@@ -10,10 +10,10 @@ var active_levels = []
 onready var camera : Camera2D = $Camera2D
 
 func _draw():
-	var despawn_bounds = LEVEL_SPAWN_BOUNDS
+	var despawn_bounds = DESPAWN_RECT
 	#despawn_bounds.position += camera.position
 	
-	#draw_rect(despawn_bounds, Color(1, 1, 1, 0.5))
+	draw_rect(despawn_bounds, Color(1, 1, 1, 0.5))
 
 func _process(delta):
 
