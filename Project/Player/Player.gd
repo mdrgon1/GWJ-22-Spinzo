@@ -10,5 +10,8 @@ func _ready():
 
 func _physics_process(delta):
 	
+	var time_dilation = get_node("/root/Main").time_dilation
+	delta *= time_dilation
+	
 	movement.update(delta);
-	movement.velocity = move_and_slide(movement.velocity, UP)
+	movement.velocity = move_and_slide(movement.velocity * time_dilation, UP) / time_dilation

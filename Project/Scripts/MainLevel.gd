@@ -3,7 +3,10 @@ extends Node2D
 const IN_FRAME_BUFFER = 0
 const LEVEL_SPAWN_BOUNDS = Rect2(Vector2(-100, -50), Vector2(200, -150))
 const DESPAWN_RECT = Rect2(Vector2(-150, -100), Vector2(150 * 2, 200))
+const MIN_TIME_DILATION = 0.1
+const TIME_DILATION_LERP = 0.4
 
+var time_dilation = 1
 var num_levels = 3
 var active_levels = []
 
@@ -17,8 +20,17 @@ func _draw():
 
 func _process(delta):
 
-	print(active_levels.size())
+	# deal with the time dilation when aiming
+	if(Input.is_action_just_pressed("aim")):
+		time_dilation = MIN_TIME_DILATION
+	elif (!Input.is_action_pressed("aim")):
+		time_dilation = 1
+	else:
+		time_dilation += (1 - time_dilation) * TIME_DILATION_LERP * delta
 	
+	print(time_dilation)
+
+	# level generation, should be in it's own script but fuck it we ball
 	if(active_levels.size() == 0):
 		create_level(camera.position - Vector2(0, 10))
 	

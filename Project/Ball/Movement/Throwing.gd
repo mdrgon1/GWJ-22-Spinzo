@@ -1,7 +1,7 @@
 extends State
 
 const TIME_TO_RECHARGE = 0.1
-const MAX_TIME = 600	# how long the ball travels for before it returns (in msec)
+const MAX_TIME = 700	# how long the ball travels for before it returns (in msec)
 
 var time_thrown : float
 var timer : float	# tracks how long "throw ball" has been pressed for
@@ -26,7 +26,7 @@ func run(delta):
 	else:
 		timer = 0
 	
-	if(timer >= TIME_TO_RECHARGE):
+	if(timer >= TIME_TO_RECHARGE / owner.time_dilation):
 		return ["Default", false]
 		
 	if((OS.get_ticks_msec() - time_thrown) >= MAX_TIME):
