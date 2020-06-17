@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://Ball/Ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Camera.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/MainLevel.gd" type="Script" id=5]
+[ext_resource path="res://Fonts/Lulo Clean/Lulo Clean W03 Three/Lulo Clean W03 Three.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=2]
+size = 80
+font_data = ExtResource( 6 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 115.823, 5 )
@@ -20,6 +25,22 @@ script = ExtResource( 5 )
 current = true
 zoom = Vector2( 0.25, 0.25 )
 script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Camera2D"]
+margin_left = -99.3055
+margin_top = -65.7413
+margin_right = 733.695
+margin_bottom = 279.259
+rect_scale = Vector2( 0.25, 0.25 )
+custom_fonts/font = SubResource( 2 )
+text = "132
+REVOLUTIONS
+PER MINUTE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 0, 30.4418 )
