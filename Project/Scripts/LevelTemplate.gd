@@ -1,12 +1,33 @@
+tool
 extends Node2D
 
 var num_hazards = 3
 var following_levels = []
 
+export var bounds_rect : Rect2
+
+func _process(delta):
+	
+	# clean out deleted levels
+	for i in range(following_levels.size()):
+		if(is_instance_valid(following_levels[i])):
+			following_levels.remove(i)
+			break
+	
+	# draw bounds
+	if(Engine.is_editor_hint()):
+		update()
+
+
+func _draw():
+	draw_rect(bounds_rect, Color(1, 1, 1, 0.5))
+
 func _ready():
-	var hazard_spawns = $EnemySpawns
-	for child in hazard_spawns.get_children():
-		create_enemy_at(child)
+	
+	if(!Engine.is_editor_hint()):
+		var hazard_spawns = $EnemySpawns
+		for child in hazard_spawns.get_children():
+			create_enemy_at(child)
 
 func create_enemy_at(target : Node2D):
 	randomize()
