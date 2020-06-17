@@ -1,19 +1,13 @@
-extends Node2D
+extends Node
 
 const IN_FRAME_BUFFER = 0
-const LEVEL_SPAWN_BOUNDS = Rect2(Vector2(-100, -50), Vector2(200, -150))
-const DESPAWN_RECT = Rect2(Vector2(-150, -100), Vector2(150 * 2, 600))
+const LEVEL_SPAWN_BOUNDS = Rect2(Vector2(-100, -10), Vector2(100, -80))
+const SPAWN_THRESHOLD_X = 700
 
 var num_levels = 3
 var active_levels = []
 
 onready var camera : Camera2D = $Camera2D
-
-func _draw():
-	var despawn_bounds = LEVEL_SPAWN_BOUNDS
-	#despawn_bounds.position += camera.position
-	
-	#draw_rect(despawn_bounds, Color(1, 1, 1, 0.5))
 
 func _process(delta):
 
@@ -25,28 +19,23 @@ func _process(delta):
 	if(active_levels.size() >= 2):
 		pass
 	
-	var despawn_bounds = DESPAWN_RECT
-	despawn_bounds.position += camera.position
-	
-	update()
-	
 	for i in range(active_levels.size()):
 		var level = active_levels[i]
-		var level_bounds = level.bounds_rect
-		level_bounds.position += level.position
 		
 		# despawn levels
 		if(!is_instance_valid(level)):
 			active_levels.remove(i)
 			break;
 		
-		if(!level_bounds.intersects(despawn_bounds)):
+		var lower_bound = camera.position.y + ProjectSettings.get_setting("display/window/size/height") * camera.zoom.y + IN_FRAME_BUFFER
+		var upper_bound = camera.position.y * 2 - lower_bound
+		if(level.position.y > lower_bound):
 			level.queue_free()
 			active_levels.erase(level)
 			break
 		
 		# create new levels if necessary
-		if(level.following_levels.size() == 0 && despawn_bounds.encloses(level_bounds)):
+		if(level.following_levels.size() == 0 && level.position.y >= upper_bound && abs(level.position.x - camera.position.x) < SPAWN_THRESHOLD_X):
 			for j in range((randi() % 2) + 1):
 				var new_level_pos = Vector2(randf(), randf())
 				new_level_pos.x *= LEVEL_SPAWN_BOUNDS.size.x
