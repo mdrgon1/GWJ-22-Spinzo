@@ -7,7 +7,13 @@ var time_thrown : float
 var timer : float	# tracks how long "throw ball" has been pressed for
 
 func enter(_args):
-	owner.player.movement.update_state("Falling")
+	if(_args.size() != 0):
+		if(_args[0]):# check if the ball was just latched
+			owner.player.movement.update_state("Falling")
+			
+			# launch the player a little bit
+			owner.player.movement.velocity *= 2
+			owner.player.movement.target_velocity *= 1.5
 	
 	time_thrown = OS.get_ticks_msec()
 	timer = 0

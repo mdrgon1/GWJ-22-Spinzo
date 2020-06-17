@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+const AIM_LINE_LENGTH = 100
+
 var time_dilation = 1
 
 onready var player = get_tree().get_nodes_in_group("player")[0]
@@ -11,7 +13,7 @@ func _ready():
 
 func _draw():
 	if(movement.current_state == $Movement/Default && Input.is_action_pressed("aim")):
-		draw_line(Vector2(0, 0), movement.velocity, Color(1, 1, 1), 1.5)
+		draw_line(Vector2(0, 0), movement.velocity.normalized() * AIM_LINE_LENGTH, Color(1, 1, 1), 1.5)
 
 func _physics_process(delta):
 	

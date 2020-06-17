@@ -15,3 +15,7 @@ func _physics_process(delta):
 	
 	movement.update(delta);
 	movement.velocity = move_and_slide(movement.velocity * time_dilation, UP) / time_dilation
+	
+	# prevent the player from floating when they hit a ceiling
+	if(get_slide_count() != 0):
+		movement.target_velocity.y = movement.velocity.y
