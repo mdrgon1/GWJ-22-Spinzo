@@ -37,6 +37,7 @@ func create_enemy_at(target : Node2D):
 	# theres a chance there will be no hazard
 	if(hazard_index >= num_hazards):
 		return
+	hazard_index = 1
 	
 	# load a random hazard and instance it
 	var hazard_path = "res://Hazards/Hazard" + String(hazard_index) + ".tscn"
