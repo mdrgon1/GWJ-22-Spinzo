@@ -19,7 +19,7 @@ func enter(_args):
 	timer = 0
 
 func run(delta):
-	
+
 	if(root_state.velocity == Vector2(0, 0)):
 		return ["Default", false]
 	

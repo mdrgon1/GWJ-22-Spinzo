@@ -42,6 +42,11 @@ func run(delta):
 		charge_timer = 0
 	
 	rotate(delta)
+	
+	# ugly fix for a bug I don't feel like tracking down
+	if(latched):
+		if(owner.player.movement.current_state != owner.player.movement.substates_map["Swinging"]):
+			owner.player.movement.update_state("Swinging")
 
 # at a right angle to the vector from player to ball
 func get_tangent():
