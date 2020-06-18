@@ -19,3 +19,8 @@ func _physics_process(delta):
 	# prevent the player from floating when they hit a ceiling
 	if(get_slide_count() != 0):
 		movement.target_velocity.y = movement.velocity.y
+
+func knockback(force : Vector2):
+	movement.velocity = force
+	movement.target_velocity = force
+	movement.update_state("Falling")
