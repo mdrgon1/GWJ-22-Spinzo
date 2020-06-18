@@ -9,6 +9,7 @@ var velocity : = Vector2(0, 0)
 
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var ball = get_tree().get_nodes_in_group("ball")[0]
+onready var camera = get_node("/root/Main/Camera2D")
 
 func _physics_process(delta):
 	
@@ -19,6 +20,10 @@ func _physics_process(delta):
 	velocity.y += GRAVITY * delta
 	
 	velocity = move_and_slide(velocity)
+	
+	# despawn if it falls below the camera
+	if(position.y >= camera.position.y + get_node("/root/Main").DESPAWN_RECT.end.y):
+		queue_free()
 
 func _on_Area2D_body_entered(body):
 	if body == player:
