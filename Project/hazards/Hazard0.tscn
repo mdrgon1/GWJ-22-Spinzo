@@ -10,7 +10,6 @@ extents = Vector2( 4.5, 4.5 )
 extents = Vector2( 5, 5 )
 
 [node name="Bopper" type="KinematicBody2D"]
-collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -21,6 +20,7 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )

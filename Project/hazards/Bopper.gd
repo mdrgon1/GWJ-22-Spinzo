@@ -8,6 +8,7 @@ const KNOCKBACK_FORCE = 150
 var velocity : = Vector2(0, 0)
 
 onready var player = get_tree().get_nodes_in_group("player")[0]
+onready var ball = get_tree().get_nodes_in_group("ball")[0]
 
 func _physics_process(delta):
 	
@@ -22,6 +23,10 @@ func _physics_process(delta):
 func _on_Area2D_body_entered(body):
 	if body == player:
 		player.knockback(calc_knockback())
+	if (body == ball && ball.is_lethal):
+		ball.movement.hit()
+		kill()
+	
 
 func calc_knockback():
 	var knockback = (player.position - position)
@@ -31,5 +36,5 @@ func calc_knockback():
 	knockback = knockback.normalized() * KNOCKBACK_FORCE
 	return knockback
 
-func die():
+func kill():
 	queue_free()

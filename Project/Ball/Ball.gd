@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
 const AIM_LINE_LENGTH = 100
+const IS_LETHAL_THRESHOLD = 100
 
 var time_dilation = 1
+var is_lethal = false
 
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var movement = $Movement
@@ -25,6 +27,13 @@ func _physics_process(delta):
 	
 	movement.update(delta)
 	movement.velocity = move_and_slide(movement.velocity * time_dilation) / time_dilation
+	
+	# check that the ball is lethal
+	is_lethal = (movement.velocity.length()) / time_dilation >= IS_LETHAL_THRESHOLD
+	if(is_lethal):
+		$Sprite.set_self_modulate(Color(1, 0, 0))
+	else:
+		$Sprite.set_self_modulate(Color(1, 1, 1))
 	
 func to_player():
 	return player.position - position
