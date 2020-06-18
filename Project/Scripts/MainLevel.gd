@@ -14,7 +14,7 @@ onready var camera : Camera2D = $Camera2D
 
 func _draw():
 	var despawn_bounds = DESPAWN_RECT
-	#despawn_bounds.position += camera.position
+	despawn_bounds.position += camera.position
 	
 	draw_rect(despawn_bounds, Color(1, 1, 1, 0.5))
 
