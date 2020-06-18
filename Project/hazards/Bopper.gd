@@ -12,8 +12,8 @@ onready var ball = get_tree().get_nodes_in_group("ball")[0]
 
 func _physics_process(delta):
 	
-	if((player.position - position).length() <= AGRO_DIST):
-		velocity.x = sign(player.position.x - position.x) * SPEED
+	if((player.position - global_position).length() <= AGRO_DIST):
+		velocity.x = sign(player.position.x - global_position.x) * SPEED
 	else:
 		velocity.x = 0
 	velocity.y += GRAVITY * delta
@@ -29,7 +29,7 @@ func _on_Area2D_body_entered(body):
 	
 
 func calc_knockback():
-	var knockback = (player.position - position)
+	var knockback = (player.position - global_position)
 	knockback.y -= 2
 	knockback.y = sign(knockback.y)
 	knockback.x = sign(knockback.x)

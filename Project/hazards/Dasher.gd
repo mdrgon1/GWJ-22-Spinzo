@@ -16,8 +16,8 @@ onready var attack_area = $AttackArea
 
 func _physics_process(delta):
 	
-	if((player.position - position).length() <= AGRO_DIST):
-		target_velocity.x = sign(player.position.x - position.x) * SPEED
+	if((player.position - global_position).length() <= AGRO_DIST):
+		target_velocity.x = sign(player.position.x - global_position.x) * SPEED
 	else:
 		target_velocity.x = 0
 	velocity.y += GRAVITY * delta
@@ -35,7 +35,7 @@ func _on_Area2D_body_entered(body):
 		kill()
 
 func calc_knockback():
-	var knockback = Vector2(sign(velocity.x), 0)
+	var knockback = Vector2(sign(player.position.x - global_position.x), 0)
 	knockback *= KNOCKBACK_FORCE
 	return knockback
 
@@ -45,4 +45,4 @@ func kill():
 func _on_AttackArea_body_entered(body):
 	if(body == player):
 		# dash towards the player
-		velocity.x = sign(player.position.x - position.x) * DASH_SPEED
+		velocity.x = sign(player.position.x - global_position.x) * DASH_SPEED
