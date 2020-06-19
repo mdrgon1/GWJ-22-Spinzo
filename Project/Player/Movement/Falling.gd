@@ -1,6 +1,7 @@
 extends State
 
 func enter(_args):
+	owner.sprite.play("Fall")
 	print("falling")
 	root_state.vel_lerp = 0.06
 
