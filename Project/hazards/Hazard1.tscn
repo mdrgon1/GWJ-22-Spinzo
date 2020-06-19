@@ -10,7 +10,7 @@ extents = Vector2( 4.5, 4.5 )
 extents = Vector2( 5.5, 5.5 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 20.0541, 3.06965 )
+extents = Vector2( 20.0541, 4.38907 )
 
 [node name="Dasher" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -24,6 +24,8 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )
