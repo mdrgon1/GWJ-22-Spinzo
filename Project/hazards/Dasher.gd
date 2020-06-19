@@ -17,9 +17,8 @@ onready var attack_area = $AttackArea
 
 func _physics_process(delta):
 	
-	if(abs(player.position.x - global_position.x) > 9):
-		if((player.position - global_position).length() <= AGRO_DIST):
-			target_velocity.x = sign(player.position.x - global_position.x) * SPEED
+	if((player.position - global_position).length() <= AGRO_DIST):
+		target_velocity.x = sign(player.position.x - global_position.x) * SPEED
 	else:
 		target_velocity.x = 0
 	velocity.y += GRAVITY * delta
