@@ -16,7 +16,6 @@ script = ExtResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.25, 0.25 )
 script = ExtResource( 4 )
 
 [node name="Ball" parent="." groups=[
