@@ -9,6 +9,7 @@ const TIME_DILATION_LERP = 0.4
 var time_dilation = 1
 var num_levels = 3
 var active_levels = []
+var grabbable_levels = []
 
 onready var camera : Camera2D = $Camera2D
 
@@ -51,8 +52,9 @@ func _process(delta):
 		if(!is_instance_valid(level)):
 			active_levels.remove(i)
 			break;
-		
 		if(!level_bounds.intersects(despawn_bounds)):
+			if(level in get_tree().get_nodes_in_group("grabbable")):
+				grabbable_levels.erase(level)
 			level.queue_free()
 			active_levels.erase(level)
 			break
@@ -79,8 +81,12 @@ func create_level(position : Vector2):
 	var level_index = randi() % num_levels
 	level_index *= sign(level_index) # make sure the index is positive
 	
-	# load a random level and instance it
-	var level_path = "res://level_templates/Template" + String(level_index) + ".tscn"
+	var level_path
+	if(grabbable_levels.size() < 2):
+		level_path = "res://level_templates/Grabbable.tscn"
+	else:
+		# load a random level and instance it
+		level_path = "res://level_templates/Template" + String(level_index) + ".tscn"
 	var level = load(level_path).instance()
 	
 	var level_bounds = level.bounds_rect
@@ -94,6 +100,8 @@ func create_level(position : Vector2):
 	
 	# create the level
 	active_levels.append(level)
+	if(level_path == "res://level_templates/Grabbable.tscn"):
+		grabbable_levels.append(level)
 	level.set_position(position)
 	call_deferred("add_child", level)
 	return level
