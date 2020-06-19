@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Ball/Ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Camera.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/MainLevel.gd" type="Script" id=5]
-[ext_resource path="res://Player Outline/animations/spriteframes.tres" type="SpriteFrames" id=6]
+[ext_resource path="res://hazards/Hazard1.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player Outline/PlayerOutline.gd" type="Script" id=7]
+[ext_resource path="res://Player Outline/animations/spriteframes.tres" type="SpriteFrames" id=8]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 5 )
@@ -26,7 +27,7 @@ target_path = NodePath("../Player")
 modulate = Color( 1, 1, 1, 0.439216 )
 scale = Vector2( 0.2, 0.2 )
 z_index = -1
-frames = ExtResource( 6 )
+frames = ExtResource( 8 )
 animation = "Fall"
 offset = Vector2( 0, -3.5 )
 
@@ -47,3 +48,6 @@ scale = Vector2( 0.15, 0.15 )
 tile_set = ExtResource( 2 )
 format = 1
 tile_data = PoolIntArray( 262140, 0, 8, 262141, 0, 10, 262142, 0, 10, 262143, 0, 11, 327674, 0, 8, 327675, 0, 10, 327676, 0, 65541, 327677, 0, 131081, 327678, 0, 131081, 327679, 0, 65542, 262144, 0, 10, 262145, 0, 10, 262146, 0, 10, 262147, 0, 10, 262148, 0, 11, 393209, 0, 8, 393210, 0, 65541, 393211, 0, 131081, 393212, 0, 131081, 393213, 0, 131081, 393214, 0, 131081, 393215, 0, 131081, 327680, 0, 131081, 327681, 0, 131081, 327682, 0, 131081, 327683, 0, 131081, 327684, 0, 131083, 458744, 0, 196609, 458745, 0, 196613, 458746, 0, 196617, 458747, 0, 196617, 458748, 0, 196617, 458749, 0, 196617, 458750, 0, 196617, 458751, 0, 196617, 393216, 0, 196617, 393217, 0, 196617, 393218, 0, 196617, 393219, 0, 196617, 393220, 0, 196614, 393221, 0, 196610, 393222, 0, 196611 )
+
+[node name="Dasher" parent="." instance=ExtResource( 6 )]
+position = Vector2( 0, -16.3291 )

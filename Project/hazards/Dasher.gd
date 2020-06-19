@@ -4,7 +4,7 @@ const SPEED = 40
 const SPEED_LERP = 1
 const DASH_SPEED = 150
 const GRAVITY = 150
-const AGRO_DIST = 80
+const AGRO_DIST = 50
 const KNOCKBACK_FORCE = 200
 
 var target_velocity : = Vector2(0, 0)
@@ -17,8 +17,9 @@ onready var attack_area = $AttackArea
 
 func _physics_process(delta):
 	
-	if((player.position - global_position).length() <= AGRO_DIST):
-		target_velocity.x = sign(player.position.x - global_position.x) * SPEED
+	if(abs(player.position.x - global_position.x) > 9):
+		if((player.position - global_position).length() <= AGRO_DIST):
+			target_velocity.x = sign(player.position.x - global_position.x) * SPEED
 	else:
 		target_velocity.x = 0
 	velocity.y += GRAVITY * delta
