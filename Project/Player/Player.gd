@@ -4,6 +4,7 @@ const UP = Vector2(0, -1)
 
 onready var movement = $Movement
 onready var ball = get_tree().get_nodes_in_group("ball")[0]
+onready var sprite = $AnimatedSprite
 
 func _ready():
 	movement.init()

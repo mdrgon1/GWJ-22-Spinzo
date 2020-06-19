@@ -4,6 +4,7 @@ const GRAVITY_MULTIPLIER = 0.4
 const JUMP_FORCE = 60
 
 func enter(_args):
+	owner.sprite.play("Jump")
 	print("jumping")
 	root_state.velocity.y = -JUMP_FORCE
 	root_state.target_velocity.y = -JUMP_FORCE

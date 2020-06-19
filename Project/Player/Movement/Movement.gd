@@ -12,6 +12,11 @@ func _ready():
 	set_root_state(self)	# set root state of entire machine to self
 
 func run(delta : float):
+	if(target_velocity.x < 0):
+		owner.sprite.set_flip_h(true)
+	if(target_velocity.x > 0):
+		owner.sprite.set_flip_h(false)
+	
 	velocity += (target_velocity - velocity) * vel_lerp * delta * 60	# lerp velocity to the target velocity
 
 # update velocity and target velocity to byass slerping
