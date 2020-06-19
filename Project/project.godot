@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "State",
 "language": "GDScript",
 "path": "res://Scripts/State.gd"
+}, {
+"base": "Node",
+"class": "Trailing",
+"language": "GDScript",
+"path": "res://Scripts/Trailing.gd"
 } ]
 _global_script_class_icons={
-"State": ""
+"State": "",
+"Trailing": ""
 }
 
 [application]

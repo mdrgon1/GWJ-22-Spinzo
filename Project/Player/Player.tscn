@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Movement/Running.gd" type="Script" id=1]
 [ext_resource path="res://Player/Movement/Movement.gd" type="Script" id=2]
@@ -6,38 +6,9 @@
 [ext_resource path="res://Player/Movement/Jumping.gd" type="Script" id=4]
 [ext_resource path="res://Player/Movement/Falling.gd" type="Script" id=5]
 [ext_resource path="res://Player/Movement/Swinging.gd" type="Script" id=6]
-[ext_resource path="res://Player/animations/Run/0005.png" type="Texture" id=7]
-[ext_resource path="res://Player/animations/idle.png" type="Texture" id=8]
-[ext_resource path="res://Player/animations/aerial_down.png" type="Texture" id=9]
-[ext_resource path="res://Player/animations/Run/0003.png" type="Texture" id=10]
-[ext_resource path="res://Player/animations/aerial_up.png" type="Texture" id=11]
-[ext_resource path="res://Player/animations/Run/0002.png" type="Texture" id=12]
-[ext_resource path="res://Player/animations/Run/0004.png" type="Texture" id=13]
+[ext_resource path="res://Player/animations/player_spriteframes.tres" type="SpriteFrames" id=7]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 11 ) ],
-"loop": false,
-"name": "Jump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 2.0
-}, {
-"frames": [ ExtResource( 12 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "Run",
-"speed": 6.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": false,
-"name": "Fall",
-"speed": 6.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.256, 6 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -61,10 +32,9 @@ script = ExtResource( 6 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -0.7 )
 scale = Vector2( 0.2, 0.2 )
-frames = SubResource( 1 )
-animation = "Fall"
-frame = 1
+frames = ExtResource( 7 )
+animation = "Idle"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
