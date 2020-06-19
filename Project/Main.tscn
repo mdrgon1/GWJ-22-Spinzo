@@ -24,9 +24,11 @@ target_path = NodePath("../Player")
 
 [node name="Sprite" type="AnimatedSprite" parent="Player Trail"]
 modulate = Color( 1, 1, 1, 0.439216 )
+scale = Vector2( 0.2, 0.2 )
 z_index = -1
 frames = ExtResource( 6 )
 animation = "Fall"
+offset = Vector2( 0, -3.5 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

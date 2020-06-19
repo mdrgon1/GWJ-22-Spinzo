@@ -29,7 +29,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity)
 	
 	# despawn if it falls below the camera
-	if(position.y >= camera.position.y + get_node("/root/Main").DESPAWN_RECT.end.y):
+	if(global_position.y >= camera.position.y + get_node("/root/Main").DESPAWN_RECT.end.y):
 		queue_free()
 
 func _on_Area2D_body_entered(body):
