@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/base_aerial_up.png-0c0996b50e2b1bd0127bb91b5652203c.stex"
+path="res://.import/base_idle.png-3932c4dad105524f095399c839f6de07.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/animations/base_aerial_up.png"
-dest_files=[ "res://.import/base_aerial_up.png-0c0996b50e2b1bd0127bb91b5652203c.stex" ]
+source_file="res://Player Outline/animations/base_idle.png"
+dest_files=[ "res://.import/base_idle.png-3932c4dad105524f095399c839f6de07.stex" ]
 
 [params]
 
