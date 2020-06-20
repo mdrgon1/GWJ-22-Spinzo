@@ -11,7 +11,7 @@ func _ready():
 
 func _physics_process(delta):
 	
-	var time_dilation = get_node("/root/Main").time_dilation
+	var time_dilation = owner.time_dilation
 	delta *= time_dilation
 	
 	movement.update(delta);

@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot wild jam 22"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://MainLevel.tscn"
 config/icon="res://icon.png"
 
 [display]
