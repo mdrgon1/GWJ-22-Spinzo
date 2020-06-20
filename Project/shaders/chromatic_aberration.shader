@@ -26,12 +26,14 @@ void fragment() {
 	// glare
 	vec3 blurred;
 	
-	blurred.r = textureLod(SCREEN_TEXTURE, distort(uv, chrom_amount - chrom_spread), glare_size).r * glare_amount;
-	blurred.g = textureLod(SCREEN_TEXTURE, distort(uv, chrom_amount), glare_size).g * glare_amount;
-	blurred.b = textureLod(SCREEN_TEXTURE, distort(uv, chrom_amount + chrom_spread), glare_size).b * glare_amount;
+	blurred.r = textureLod(SCREEN_TEXTURE, distort(uv, chrom_amount - chrom_spread), glare_size).r;
+	blurred.g = textureLod(SCREEN_TEXTURE, distort(uv, chrom_amount), glare_size).g;
+	blurred.b = textureLod(SCREEN_TEXTURE, distort(uv, chrom_amount + chrom_spread), glare_size).b;
 	
-	blurred -= glare_contrast;
+	blurred -= glare_contrast * length(blurred);
 	blurred = max(blurred, vec3(0, 0, 0));
+	
+	blurred *= glare_amount;
 	
 	COLOR.rgb += blurred;
 	
