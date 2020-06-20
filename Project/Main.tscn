@@ -14,10 +14,10 @@ script = ExtResource( 1 )
 z_index = 2
 
 [node name="Control3" type="Control" parent="Node2D"]
-margin_left = -129.0
-margin_top = -79.0
-margin_right = 131.0
-margin_bottom = 78.0
+margin_left = -316.0
+margin_top = -150.0
+margin_right = 306.0
+margin_bottom = 129.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
