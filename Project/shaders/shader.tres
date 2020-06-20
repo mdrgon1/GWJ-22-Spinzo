@@ -4,5 +4,8 @@
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/amount = 0.5
-shader_param/spread = 0.1
+shader_param/chrom_amount = 0.5
+shader_param/chrom_spread = 0.1
+shader_param/glare_size = 4.0
+shader_param/glare_contrast = 0.3
+shader_param/glare_amount = 1.3

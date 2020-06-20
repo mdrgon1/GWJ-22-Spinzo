@@ -29,10 +29,12 @@ collision_mask = 2
 z_index = -1
 script = ExtResource( 2 )
 trail_speed = 80.0
+num_trails = 7
 pos_lerp = 20.0
 target_path = NodePath("../../MainLevel/Player")
 
 [node name="Sprite" type="AnimatedSprite" parent="Player Trail"]
+self_modulate = Color( 1, 1, 1, 0.196078 )
 scale = Vector2( 0.2, 0.2 )
 frames = ExtResource( 6 )
 animation = "Fall"
