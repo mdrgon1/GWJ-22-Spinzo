@@ -38,6 +38,9 @@ func run(delta):
 	if((OS.get_ticks_msec() - time_thrown) >= MAX_TIME):
 		return ["Default", false]
 	
-	if(Input.is_key_pressed(KEY_X)):
-		owner.player.movement.update_state("Swinging")	#force player into swinging state
-		return ["Default", true]
+	if(Input.is_key_pressed(KEY_V)):
+		start_swinging()
+
+func start_swinging():
+	owner.player.movement.update_state("Swinging")	#force player into swinging state
+	owner.movement.update_state(["Default", true])
