@@ -7,6 +7,7 @@ func _ready():
 	sprite.offset = target.sprite.offset
 	if(target in get_tree().get_nodes_in_group("player")):
 		pos_lerp = 60
+		sprite.self_modulate.a = 1
 
 func _physics_process(delta):
 	run(delta)
@@ -14,3 +15,4 @@ func _physics_process(delta):
 func _process(delta):
 	if(sprite.animation != target.sprite.animation):
 		sprite.play(target.sprite.animation)
+	sprite.flip_h = target.sprite.flip_h

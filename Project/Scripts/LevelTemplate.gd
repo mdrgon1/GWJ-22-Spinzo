@@ -20,6 +20,7 @@ func _process(delta):
 
 
 func _draw():
+	return
 	draw_rect(bounds_rect, Color(1, 1, 1, 0.5))
 
 func _ready():

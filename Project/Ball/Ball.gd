@@ -19,7 +19,7 @@ func _draw():
 
 func _physics_process(delta):
 	
-	time_dilation = get_node("/root/Main").time_dilation
+	time_dilation = owner.time_dilation
 	delta *= time_dilation
 	
 	# draw aiming line thing
