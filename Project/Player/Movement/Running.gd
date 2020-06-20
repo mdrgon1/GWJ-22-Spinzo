@@ -11,7 +11,7 @@ func run(delta):
 		owner.sprite.play("Run")
 	
 	root_state.target_velocity.x = root_state.get_input_vector().x * root_state.HOR_SPEED #normal movement
-	root_state.velocity.y = 1 # just to keep player in running state
+	root_state.velocity.y = 10 # just to keep player in running state
 	
 	if(Input.is_action_pressed("jump")):
 		return "Jumping"
