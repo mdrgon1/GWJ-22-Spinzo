@@ -14,6 +14,7 @@ var grabbable_levels = []
 onready var camera : Camera2D = $Camera2D
 
 func _draw():
+	return
 	var despawn_bounds = DESPAWN_RECT
 	despawn_bounds.position += camera.position
 	

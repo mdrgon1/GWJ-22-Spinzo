@@ -14,3 +14,4 @@ func _physics_process(delta):
 func _process(delta):
 	if(sprite.animation != target.sprite.animation):
 		sprite.play(target.sprite.animation)
+	sprite.flip_h = target.sprite.flip_h
