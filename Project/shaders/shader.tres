@@ -4,11 +4,11 @@
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/chrom_amount = 0.5
-shader_param/chrom_spread = 0.1
+shader_param/chrom_amount = 0.4
+shader_param/chrom_spread = 0.05
 shader_param/glare_size = 3.0
 shader_param/glare_contrast = -0.394
-shader_param/glare_amount = 0.818
+shader_param/glare_amount = 0.2
 shader_param/line_strength = 0.08
 shader_param/line_density = 600.0
 shader_param/line_contrast = -0.1

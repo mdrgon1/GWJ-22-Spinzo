@@ -9,4 +9,4 @@ func _enter_tree():
 
 func _process(delta):
 	position.y = min(position.y, player.position.y + Y_OFFSET)
-	position.x = player.position.x
+	position = player.position
