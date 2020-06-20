@@ -1,14 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/LevelTemplate.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 33.6698, 8.22124 )
+[ext_resource path="res://tileset.tres" type="TileSet" id=2]
 
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource( 1 )
-bounds_rect = Rect2( -37, -30, 110, 60 )
+bounds_rect = Rect2( -20, -20, 70, 60 )
 
 [node name="EnemySpawns" type="Node" parent="."]
 
@@ -18,17 +15,8 @@ position = Vector2( 40.3226, -9.67534 )
 [node name="Node2D2" type="Node2D" parent="EnemySpawns"]
 position = Vector2( -28.5978, -9.67534 )
 
-[node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 14.6558, 8.45546 )
-scale = Vector2( 1.05087, 0.251806 )
-texture = ExtResource( 2 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 14.9464, 8.53349 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 1 )
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.15, 0.15 )
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( 131070, 0, 196609, 131071, 0, 5, 65536, 0, 6, 65537, 0, 196610, 65538, 0, 196610, 65539, 0, 5, 65540, 0, 11, 196607, 0, 196616, 131072, 0, 196619, 131075, 0, 131076, 131076, 0, 196619, 196609, 0, 196609, 196610, 0, 196610, 196611, 0, 131075 )

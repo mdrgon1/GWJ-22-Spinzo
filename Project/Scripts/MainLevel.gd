@@ -83,7 +83,7 @@ func create_level(position : Vector2):
 	level_index *= sign(level_index) # make sure the index is positive
 	
 	var level_path
-	if(grabbable_levels.size() < 2):
+	if(grabbable_levels.size() < 3):
 		level_path = "res://level_templates/Grabbable.tscn"
 	else:
 		# load a random level and instance it

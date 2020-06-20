@@ -4,14 +4,14 @@
 [ext_resource path="res://Scripts/LevelTemplate.gd" type="Script" id=2]
 [ext_resource path="res://level_templates/Area2D.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6.17605, 5.90527 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 13.0
 
 [node name="Node2D" type="Node2D" groups=[
 "grabbable",
 ]]
 script = ExtResource( 2 )
-bounds_rect = Rect2( -50, -50, 100, 100 )
+bounds_rect = Rect2( -25, -25, 50, 50 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
