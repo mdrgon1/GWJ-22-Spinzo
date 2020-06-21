@@ -4,9 +4,8 @@ var camera : Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#var main_level = load("res://MainLevel.tscn").instance()
-	#call_deferred("add_child", main_level)
-	pass
+	var main_level = load("res://MainLevel.tscn").instance()
+	call_deferred("add_child", main_level)
 
 func _process(delta):
 	if(camera == null):		

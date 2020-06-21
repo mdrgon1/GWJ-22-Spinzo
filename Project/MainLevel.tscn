@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/MainLevel.gd" type="Script" id=1]
 [ext_resource path="res://Player Outline/PlayerOutline.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Player Outline/animations/spriteframes.tres" type="SpriteFrames" id=6]
 [ext_resource path="res://Scripts/Camera.gd" type="Script" id=7]
 [ext_resource path="res://backdrop/mountains.png" type="Texture" id=8]
+[ext_resource path="res://backdrop/sky.png" type="Texture" id=9]
 
 [sub_resource type="ShaderMaterial" id=2]
 
@@ -60,8 +61,26 @@ tile_data = PoolIntArray( 262140, 0, 8, 262141, 0, 10, 262142, 0, 10, 262143, 0,
 scale = Vector2( 0.2, 0.2 )
 transform = Transform2D( 0.2, 0, 0, 0.2, 0, 0 )
 
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = -1
+motion_scale = Vector2( 1.28, 0.64 )
+motion_mirroring = Vector2( 1536, 864 )
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource( 2 )
+margin_left = -373.749
+margin_top = 6.0
+margin_right = 1162.25
+margin_bottom = 870.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.8, 0.8 )
+motion_scale = Vector2( 1.6, 0.8 )
 motion_mirroring = Vector2( 1920, 1080 )
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
