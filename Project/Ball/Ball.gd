@@ -25,7 +25,7 @@ func _draw():
 func _physics_process(delta):
 	
 	# update rps multiplier
-	var multiplier = min(-0.001 * player.position.y + 1, 3)
+	var multiplier = min(-0.0007 * player.position.y + 1, 1.7)
 	movement.substates_map["Default"].rps_multiplier = multiplier
 	print(multiplier)
 	
