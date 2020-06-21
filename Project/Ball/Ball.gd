@@ -3,12 +3,16 @@ extends KinematicBody2D
 const AIM_LINE_LENGTH = 100
 const IS_LETHAL_THRESHOLD = 100
 
+export var charge : AudioStream
+export var shoot : AudioStream
+
 var time_dilation = 1
 var is_lethal = false
 
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var movement = $Movement
 onready var sprite = $Sprite
+onready var sound = $Sound
 
 func _ready():
 	movement.set_root_state(movement)

@@ -2,9 +2,13 @@ extends KinematicBody2D
 
 const UP = Vector2(0, -1)
 
+export var walking : AudioStream
+export var jumping : AudioStream
+
 onready var movement = $Movement
 onready var ball = get_tree().get_nodes_in_group("ball")[0]
 onready var sprite = $AnimatedSprite
+onready var sound = $Sound
 
 func _ready():
 	movement.init()

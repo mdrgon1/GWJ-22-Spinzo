@@ -4,6 +4,8 @@ const GRAVITY_MULTIPLIER = 0.4
 const JUMP_FORCE = 60
 
 func enter(_args):
+	owner.sound.set_stream(owner.jumping)
+	owner.sound.playing = true
 	owner.sprite.play("Jump")
 	print("jumping")
 	root_state.velocity.y = -JUMP_FORCE

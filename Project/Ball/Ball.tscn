@@ -1,16 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Ball/sprite.png" type="Texture" id=1]
 [ext_resource path="res://Ball/Ball.gd" type="Script" id=2]
 [ext_resource path="res://Ball/Movement/Default.gd" type="Script" id=3]
 [ext_resource path="res://Ball/Movement/Movement.gd" type="Script" id=4]
 [ext_resource path="res://Ball/Movement/Throwing.gd" type="Script" id=5]
+[ext_resource path="res://sounds/charge.wav" type="AudioStream" id=6]
+[ext_resource path="res://sounds/shoot.wav" type="AudioStream" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
 
 [node name="Ball" type="KinematicBody2D"]
 script = ExtResource( 2 )
+charge = ExtResource( 6 )
+shoot = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -28,3 +32,5 @@ script = ExtResource( 3 )
 
 [node name="Throwing" type="Node" parent="Movement"]
 script = ExtResource( 5 )
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
