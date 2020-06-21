@@ -441,5 +441,5 @@ scale = Vector2( 0.518603, 0.518603 )
 z_index = 3
 frames = SubResource( 60 )
 animation = "Default"
-frame = 36
+frame = 45
 playing = true

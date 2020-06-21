@@ -15,6 +15,9 @@ func reset():
 	if(child_trail != null):
 		child_trail.reset()
 
+func exit_tree():
+	child_trail.queue_free()
+
 func _enter_tree():
 	if(num_trails > 0):
 		var new_trail = self.duplicate()
@@ -24,7 +27,7 @@ func _enter_tree():
 		new_trail.pos_lerp = pos_lerp
 		new_trail.position = position
 		child_trail = new_trail
-		get_tree().root.call_deferred("add_child", new_trail)
+		get_parent().call_deferred("add_child", new_trail)
 	target = get_node(target_path)
 
 func run(delta):

@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://hazards/animations/bopper/outline0007.png" type="Texture" id=2]
+[ext_resource path="res://hazards/animations/bopper/outline0008.png" type="Texture" id=3]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Trailing
+
+onready var sprite = $Sprite
+
+func _ready():
+	sprite.scale = target.sprite.scale
+	sprite.offset = target.sprite.offset
+
+func _physics_process(delta):
+	if(!is_instance_valid(target)):
+		free()
+		return
+	run(delta)
+	if(sprite.animation != target.sprite.animation):
+		sprite.play(target.sprite.animation)
+	sprite.flip_h = target.sprite.flip_h
+"
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Bopping",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Default",
+"speed": 6.0
+} ]
+
+[node name="BopperTrail" type="Node2D"]
+z_index = -1
+script = SubResource( 2 )
+trail_speed = 100.0
+num_trails = 4
+pos_lerp = 30.0
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 1, 1, 0.572549 )
+frames = SubResource( 3 )
+animation = "Bopping"
+offset = Vector2( 1.143, 6.297 )

@@ -1,7 +1,7 @@
 tool
 extends Node2D
 
-var num_hazards = 3
+var num_hazards = 2
 var following_levels = []
 
 export var bounds_rect : Rect2
@@ -17,7 +17,6 @@ func _process(delta):
 	# draw bounds
 	if(Engine.is_editor_hint()):
 		update()
-
 
 func _draw():
 	if(Engine.is_editor_hint()):

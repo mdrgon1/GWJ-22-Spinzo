@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://hazards/animations/dasher/outline0000.png" type="Texture" id=1]
+[ext_resource path="res://hazards/animations/dasher/outline0001.png" type="Texture" id=2]
+[ext_resource path="res://hazards/animations/dasher/outline0005.png" type="Texture" id=3]
+[ext_resource path="res://hazards/animations/dasher/outline0003.png" type="Texture" id=4]
+[ext_resource path="res://hazards/animations/dasher/outline0002.png" type="Texture" id=5]
+[ext_resource path="res://hazards/animations/dasher/outline0004.png" type="Texture" id=6]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Trailing
+
+onready var sprite = $Sprite
+
+func _ready():
+	sprite.scale = target.sprite.scale
+	sprite.offset = target.sprite.offset
+
+func _physics_process(delta):
+	if(!is_instance_valid(target)):
+		free()
+		return
+	run(delta)
+	if(sprite.animation != target.sprite.animation):
+		sprite.play(target.sprite.animation)
+	sprite.flip_h = target.sprite.flip_h
+"
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Dash",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Default",
+"speed": 5.0
+} ]
+
+[node name="DasherTrail" type="Node2D"]
+z_index = -1
+script = SubResource( 2 )
+trail_speed = 100.0
+num_trails = 4
+pos_lerp = 30.0
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 1, 1, 0.572549 )
+frames = SubResource( 1 )
+animation = "Dash"
