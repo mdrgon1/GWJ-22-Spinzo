@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/MainLevel.gd" type="Script" id=1]
 [ext_resource path="res://Player Outline/PlayerOutline.gd" type="Script" id=2]
@@ -12,10 +12,7 @@
 [ext_resource path="res://Fonts/DJGROSS.ttf" type="DynamicFontData" id=10]
 [ext_resource path="res://Fonts/Lulo Clean/FontsFree-Net-Lulo-Clean-W01-One-Bold.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://Fonts/Lulo Clean/Lulo Clean W03 Three Bold/Lulo Clean W03 Three Bold.ttf" type="DynamicFontData" id=12]
-
-[sub_resource type="DynamicFont" id=1]
-size = 120
-font_data = ExtResource( 10 )
+[ext_resource path="res://sounds/Music.wav" type="AudioStream" id=13]
 
 [sub_resource type="DynamicFont" id=3]
 size = 85
@@ -25,6 +22,10 @@ font_data = ExtResource( 11 )
 size = 85
 extra_spacing_top = -5
 font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 150
+font_data = ExtResource( 10 )
 
 [sub_resource type="ShaderMaterial" id=2]
 
@@ -73,50 +74,6 @@ current = true
 zoom = Vector2( 0.2, 0.2 )
 script = ExtResource( 7 )
 
-[node name="RPM3" type="Label" parent="Camera2D"]
-margin_left = -23.7619
-margin_top = -44.2841
-margin_right = 244.238
-margin_bottom = 100.716
-rect_scale = Vector2( 0.2, 0.2 )
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.552941, 0, 0, 1 )
-text = "1"
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RPM2" type="Label" parent="Camera2D"]
-margin_left = -23.7619
-margin_top = -44.2841
-margin_right = 244.238
-margin_bottom = 100.716
-rect_scale = Vector2( 0.2, 0.2 )
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.552941, 0, 0, 1 )
-text = "3"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RPM1" type="Label" parent="Camera2D"]
-margin_left = -23.7619
-margin_top = -44.2841
-margin_right = 244.238
-margin_bottom = 100.716
-rect_scale = Vector2( 0.2, 0.2 )
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.552941, 0, 0, 1 )
-text = "2"
-align = 2
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Node2D" type="Node2D" parent="Camera2D"]
 scale = Vector2( 0.8, 0.8 )
 
@@ -147,6 +104,50 @@ custom_colors/font_color = Color( 0.537255, 0.32549, 0.929412, 1 )
 text = "REVOLUTIONS
 PER MINUTE"
 align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPM3" type="Label" parent="Camera2D"]
+margin_left = -33.0
+margin_top = -41.0
+margin_right = 295.0
+margin_bottom = 136.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.552941, 0, 0, 1 )
+text = "1"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPM2" type="Label" parent="Camera2D"]
+margin_left = -33.0
+margin_top = -41.0
+margin_right = 295.0
+margin_bottom = 136.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.552941, 0, 0, 1 )
+text = "3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RPM1" type="Label" parent="Camera2D"]
+margin_left = -33.0
+margin_top = -41.0
+margin_right = 295.0
+margin_bottom = 136.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.552941, 0, 0, 1 )
+text = "2"
+align = 2
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -197,3 +198,7 @@ stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+autoplay = true

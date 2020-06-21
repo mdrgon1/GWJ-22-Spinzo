@@ -14,7 +14,9 @@ func _ready():
 	movement.init()
 
 func reset():
-	position = Vector2(0, 0)
+	position = Vector2(0, 3)
+	movement.velocity = Vector2(0, 0)
+	movement.update_state("Default")
 
 func _draw():
 	if(movement.current_state == $Movement/Default && Input.is_action_pressed("aim")):

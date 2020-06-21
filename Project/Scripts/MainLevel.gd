@@ -49,9 +49,12 @@ func _process(delta):
 	var despawn_bounds = DESPAWN_RECT
 	despawn_bounds.position += camera.position
 	
-	# kill player maybe
+	# check if player should be killed
 	if(!despawn_bounds.has_point(player.position + Vector2(0, 30))):
 		emit_signal("player_died")
+		#move levels somewhere they all can be despawned
+		for level in active_levels:
+			level.position.y -= 1000
 	
 	update()
 	
