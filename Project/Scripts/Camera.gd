@@ -16,6 +16,10 @@ onready var rpm_counter = [$RPM1, $RPM2, $RPM3]
 func _enter_tree():
 	_set_current(true)
 
+func reset():
+	position = Vector2(0, 0)
+	min_height = 0
+
 func _process(delta):
 	# follow player
 	min_height = min(min_height, position.y)

@@ -8,7 +8,7 @@ func _ready():
 	call_deferred("add_child", main_level)
 
 func _process(delta):
-	if(camera == null):		
+	if(camera == null):
 		camera = get_tree().get_nodes_in_group("camera")[0]
 	$Node2D.position = camera.position
 	

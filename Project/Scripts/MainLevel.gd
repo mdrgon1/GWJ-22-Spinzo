@@ -12,6 +12,13 @@ var active_levels = []
 var grabbable_levels = []
 
 onready var camera : Camera2D = $Camera2D
+onready var player = get_tree().get_nodes_in_group("player")[0]
+
+signal player_died
+
+func _ready():
+	for node in get_tree().get_nodes_in_group("reset"):
+		connect("player_died", node, "reset")
 
 func _draw():
 	return
@@ -21,7 +28,7 @@ func _draw():
 	draw_rect(despawn_bounds, Color(1, 1, 1, 0.5))
 
 func _process(delta):
-
+	
 	# deal with the time dilation when aiming
 	if(Input.is_action_just_pressed("aim")):
 		time_dilation = MIN_TIME_DILATION
@@ -41,6 +48,10 @@ func _process(delta):
 	
 	var despawn_bounds = DESPAWN_RECT
 	despawn_bounds.position += camera.position
+	
+	# kill player maybe
+	if(!despawn_bounds.has_point(player.position + Vector2(0, 30))):
+		emit_signal("player_died")
 	
 	update()
 	

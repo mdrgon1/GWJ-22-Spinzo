@@ -9,6 +9,12 @@ onready var sprite = $AnimatedSprite
 func _ready():
 	movement.init()
 
+func reset():
+	position = Vector2(0, 0)
+	movement.velocity = Vector2(0, 0)
+	movement.target_velocity = Vector2(0, 0)
+	movement.init()
+
 func _physics_process(delta):
 	
 	var time_dilation = owner.time_dilation

@@ -13,6 +13,9 @@ func _ready():
 	movement.set_root_state(movement)
 	movement.init()
 
+func reset():
+	position = Vector2(0, 0)
+
 func _draw():
 	if(movement.current_state == $Movement/Default && Input.is_action_pressed("aim")):
 		draw_line(Vector2(0, 0), movement.velocity.normalized() * AIM_LINE_LENGTH, Color(1, 1, 1), 1.5)
