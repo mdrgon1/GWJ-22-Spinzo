@@ -8,6 +8,7 @@ var is_lethal = false
 
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var movement = $Movement
+onready var sprite = $Sprite
 
 func _ready():
 	movement.set_root_state(movement)
