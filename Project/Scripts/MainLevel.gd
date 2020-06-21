@@ -37,8 +37,6 @@ func _process(delta):
 	else:
 		time_dilation += (1 - time_dilation) * TIME_DILATION_LERP * delta
 	
-	print(time_dilation)
-
 	# level generation, should be in it's own script but fuck it we ball
 	if(active_levels.size() == 0):
 		create_level(camera.position - Vector2(0, 10))

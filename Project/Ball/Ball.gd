@@ -24,6 +24,11 @@ func _draw():
 
 func _physics_process(delta):
 	
+	# update rps multiplier
+	var multiplier = min(-0.001 * player.position.y + 1, 3)
+	movement.substates_map["Default"].rps_multiplier = multiplier
+	print(multiplier)
+	
 	time_dilation = owner.time_dilation
 	delta *= time_dilation
 	
