@@ -84,7 +84,7 @@ margin_right = 815.238
 margin_bottom = 240.716
 rect_scale = Vector2( 0.2, 0.2 )
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.223529, 0.545098, 0.666667, 1 )
+custom_colors/font_color = Color( 0.223529, 0.545098, 0.666667, 0.615686 )
 text = "REVOLUTIONS
 PER MINUTE"
 align = 1
@@ -100,7 +100,7 @@ margin_right = 816.238
 margin_bottom = 250.716
 rect_scale = Vector2( 0.2, 0.2 )
 custom_fonts/font = SubResource( 4 )
-custom_colors/font_color = Color( 0.537255, 0.32549, 0.929412, 1 )
+custom_colors/font_color = Color( 0.537255, 0.32549, 0.929412, 0.45098 )
 text = "REVOLUTIONS
 PER MINUTE"
 align = 1
@@ -111,9 +111,9 @@ __meta__ = {
 
 [node name="RPM3" type="Label" parent="Camera2D"]
 margin_left = -33.0
-margin_top = -41.0
+margin_top = -44.0
 margin_right = 295.0
-margin_bottom = 136.0
+margin_bottom = 133.0
 rect_scale = Vector2( 0.2, 0.2 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.552941, 0, 0, 1 )
@@ -125,9 +125,9 @@ __meta__ = {
 
 [node name="RPM2" type="Label" parent="Camera2D"]
 margin_left = -33.0
-margin_top = -41.0
+margin_top = -44.0
 margin_right = 295.0
-margin_bottom = 136.0
+margin_bottom = 133.0
 rect_scale = Vector2( 0.2, 0.2 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.552941, 0, 0, 1 )
@@ -140,9 +140,9 @@ __meta__ = {
 
 [node name="RPM1" type="Label" parent="Camera2D"]
 margin_left = -33.0
-margin_top = -41.0
+margin_top = -44.0
 margin_right = 295.0
-margin_bottom = 136.0
+margin_bottom = 133.0
 rect_scale = Vector2( 0.2, 0.2 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.552941, 0, 0, 1 )

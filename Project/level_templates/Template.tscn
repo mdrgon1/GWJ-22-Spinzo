@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/LevelTemplate.gd" type="Script" id=1]
+[ext_resource path="res://tileset.tres" type="TileSet" id=2]
+
+[node name="LevelTemplate" type="Node2D"]
+z_index = 3
+script = ExtResource( 1 )
+bounds_rect = Rect2( -50, -15, 110, 40 )
+
+[node name="EnemySpawns" type="Node" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2( 0.15, 0.15 )
+tile_set = ExtResource( 2 )
+format = 1

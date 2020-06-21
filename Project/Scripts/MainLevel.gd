@@ -7,7 +7,7 @@ const MIN_TIME_DILATION = 0.1
 const TIME_DILATION_LERP = 0.4
 
 var time_dilation = 1
-var num_levels = 3
+var num_levels = 5
 var active_levels = []
 var grabbable_levels = []
 
