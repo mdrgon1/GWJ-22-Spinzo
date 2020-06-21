@@ -1,8 +1,8 @@
 extends Node2D
 
 const IN_FRAME_BUFFER = 0
-const LEVEL_SPAWN_BOUNDS = Rect2(Vector2(-100, -50), Vector2(200, -150))
-const DESPAWN_RECT = Rect2(Vector2(-150, -100), Vector2(150 * 2, 200))
+const LEVEL_SPAWN_BOUNDS = Rect2(Vector2(-100, 0), Vector2(200, -70))
+const DESPAWN_RECT = Rect2(Vector2(-100, -70), Vector2(100 * 2, 140))
 const MIN_TIME_DILATION = 0.1
 const TIME_DILATION_LERP = 0.4
 
@@ -22,8 +22,8 @@ func _ready():
 
 func _draw():
 	return
-	var despawn_bounds = DESPAWN_RECT
-	despawn_bounds.position += camera.position
+	var despawn_bounds = LEVEL_SPAWN_BOUNDS
+	#despawn_bounds.position += camera.position
 	
 	draw_rect(despawn_bounds, Color(1, 1, 1, 0.5))
 
@@ -40,15 +40,12 @@ func _process(delta):
 	# level generation, should be in it's own script but fuck it we ball
 	if(active_levels.size() == 0):
 		create_level(camera.position - Vector2(0, 10))
-	
-	if(active_levels.size() >= 2):
-		pass
-	
+		
 	var despawn_bounds = DESPAWN_RECT
 	despawn_bounds.position += camera.position
 	
 	# check if player should be killed
-	if(!despawn_bounds.has_point(player.position + Vector2(0, 30))):
+	if(!despawn_bounds.has_point(player.position + Vector2(0, 10))):
 		emit_signal("player_died")
 		#move levels somewhere they all can be despawned
 		for level in active_levels:
@@ -73,13 +70,15 @@ func _process(delta):
 			break
 		
 		# create new levels if necessary
-		if(level.following_levels.size() == 0 && despawn_bounds.encloses(level_bounds)):
+		if(level.following_levels.size() == 0 && despawn_bounds.intersects(level_bounds)):
 			for j in range((randi() % 2) + 1):
-				var new_level_pos = Vector2(randf(), randf())
-				new_level_pos.x *= LEVEL_SPAWN_BOUNDS.size.x
-				new_level_pos.y *= LEVEL_SPAWN_BOUNDS.size.y
-				new_level_pos += LEVEL_SPAWN_BOUNDS.position
-				new_level_pos += level.position
+				var new_level_pos = Vector2(0, level.position.y + 100)
+				while(new_level_pos.y > level.position.y):
+					new_level_pos = Vector2(randf(), randf())
+					new_level_pos.x *= LEVEL_SPAWN_BOUNDS.size.x
+					new_level_pos.y *= LEVEL_SPAWN_BOUNDS.size.y
+					new_level_pos += LEVEL_SPAWN_BOUNDS.position
+					new_level_pos += level.position
 				
 				var new_level = create_level(new_level_pos)
 				if(new_level != null):
@@ -95,7 +94,7 @@ func create_level(position : Vector2):
 	level_index *= sign(level_index) # make sure the index is positive
 	
 	var level_path
-	if(grabbable_levels.size() < 3):
+	if(grabbable_levels.size() < 2):
 		level_path = "res://level_templates/Grabbable.tscn"
 	else:
 		# load a random level and instance it
