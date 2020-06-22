@@ -39,7 +39,7 @@ func create_enemy_at(target : Node2D):
 		return
 	
 	# load a random hazard and instance it
-	var hazard_path = "res://Hazards/Hazard" + String(hazard_index) + ".tscn"
+	var hazard_path = "res://hazards/Hazard" + String(hazard_index) + ".tscn"
 	var hazard = load(hazard_path).instance()
 	
 	hazard.set_position(target.position)
